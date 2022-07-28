@@ -12,8 +12,7 @@ SOURCES += \
     controllerUsers.cpp \
     main.cpp \
     mainwindow.cpp \
-    secondwindow.cpp \
-    user.cpp
+    secondwindow.cpp
 
 HEADERS += \
     ControllerUsers.h \
