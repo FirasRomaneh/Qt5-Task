@@ -15,12 +15,17 @@ class SecondWindow : public QMainWindow
 public:
     explicit SecondWindow(QWidget *parent = nullptr);
     ~SecondWindow();
+    void SetListData(QVector <User*>);
 
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::SecondWindow *ui;
+
+signals:
+    void secondshow();
+
 };
 
 #endif // SECONDWINDOW_H

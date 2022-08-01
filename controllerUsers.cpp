@@ -1,11 +1,27 @@
-//#include "ControllerUsers.h"
+#include "ControllerUsers.h"
+#include <iostream>
 
-//void ControllerUsers::AddUser(User* u){
-//    data1.append(u);
-//}
+ControllerUsers::ControllerUsers() {
+    main = new MainWindow();
+    second = new SecondWindow();
+    connect(main, &MainWindow::mainshow, this, &ControllerUsers::showSecond);
+    connect(second, &SecondWindow::secondshow, this, &ControllerUsers::showMain);
+    second->show();
+}
 
-//QVector<User*> ControllerUsers::getUesrs(){
-//    return data1;
-//}
+ControllerUsers::~ControllerUsers()
+{
+//   hide();
+}
 
+void ControllerUsers::showSecond(User* uu){
+    data1.append(uu);
+    main->close();
+    second->SetListData(data1);
+    second->show();
+}
 
+void ControllerUsers::showMain(){
+    second->close();
+    main->show();
+}

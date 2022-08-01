@@ -1,18 +1,12 @@
 #include "secondwindow.h"
 #include "ui_secondwindow.h"
-#include "mainwindow.h"
-#include "user.h"
-#include "ControllerUsers.h"
 
 SecondWindow::SecondWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SecondWindow)
 {
     ui->setupUi(this);
-    QVector<User*> data1 = ControllerUsers::getUesrs();
-    for(auto i: data1){
-        ui->listWidget->addItem(i->getName());
-    }
+//    QVector<User*> data1 = ControllerUsers::getAlluser();
 }
 
 SecondWindow::~SecondWindow()
@@ -22,8 +16,13 @@ SecondWindow::~SecondWindow()
 
 void SecondWindow::on_pushButton_clicked()
 {
-    hide();
-    MainWindow *main;
-    main = new MainWindow(this);
-    main->show();
+//    this->close();
+    emit secondshow();
+}
+
+void SecondWindow::SetListData(QVector <User*> Setdata){
+    ui->listWidget->clear();
+    for(auto i: Setdata){
+        ui->listWidget->addItem(i->getName());
+    }
 }
